@@ -52,10 +52,5 @@ jobs:
       - name: Deploy static site to S3 test-nuxt-app bucket
         run: aws s3 sync ./dist/ s3://test-nuxt-app --delete
 
-      - name: Invalidate CloudFront Cache
-        run: |
-          DISTRIBUTION_ID=EEQP7VIERMJSD  # Replace with your actual CloudFront distribution ID
-          aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --paths "/*"
-
       - name: All run done
         run: echo Astalavista
